@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Home from "./components/Home/Home";
-import Login from "./Components/Login";
+import Login from "./components/Login/Login";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
