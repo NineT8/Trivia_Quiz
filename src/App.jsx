@@ -13,7 +13,7 @@ function App() {
 
     if (email === '' || password === '') {
       setMessage('Please fill in both fields.');
-    } else if (email === 'Adim@gmail' && password === '123456') {
+    } else if (email === 'Admin@gmail' && password === '123456') {
       setMessage('Login successful!');
     } else {
       setMessage('Wrong email or password.');
