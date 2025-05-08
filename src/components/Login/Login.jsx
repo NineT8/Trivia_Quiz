@@ -18,10 +18,10 @@ const Login = ({ onLoginSuccess }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.email.includes('@') && formData.password.length > 4) {
-      console.log("Validation passed, calling onLoginSuccess");
+      console.log("onLoginSuccess");
       onLoginSuccess();
     }
-    // else do nothing
+
   };
 
   return (
