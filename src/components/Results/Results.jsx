@@ -1,20 +1,28 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import React from 'react';
 import './Results.css';
 
-const Results = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const { score, totalQuestions } = location.state || { score: 0, totalQuestions: 0 };
+const Results = ({ score, totalQuestions, onPlayAgain }) => {
+  const percentage = Math.round((score / totalQuestions) * 100);
+  
+  const getMessage = () => {
+    if (percentage >= 90) return "Outstanding! You're a trivia master! ";
+    if (percentage >= 70) return "Great job! You really know your stuff! ";
+    if (percentage >= 50) return "Good effort! Keep practicing!";
+    return "Keep learning! You'll do better next time!";
+  };
 
   return (
     <div className="results-container">
       <h2>Quiz Complete!</h2>
-      <div className="score-display">
-        <p>Your Score: {score} out of {totalQuestions}</p>
-        <p>Percentage: {((score / totalQuestions) * 100).toFixed(1)}%</p>
+      <div className="score-circle">
+        <div className="score-percentage">{percentage}%</div>
+        <div className="score-text">
+          {score} / {totalQuestions}
+        </div>
       </div>
-      <button onClick={() => navigate('/')} className="home-button">
-        Back to Home
+      <p className="result-message">{getMessage()}</p>
+      <button className="play-again-button" onClick={onPlayAgain}>
+        Play Again
       </button>
     </div>
   );

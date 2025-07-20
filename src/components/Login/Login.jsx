@@ -18,10 +18,18 @@ const Login = ({ onLoginSuccess }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.email.includes('@') && formData.password.length > 4) {
-      console.log("onLoginSuccess");
+      console.log("Validation passed, calling onLoginSuccess");
       onLoginSuccess();
     }
-
+    else {
+      console.error("Validation failed");
+      alert("Please enter a valid email and password (at least 5 characters).");
+    }
+    setFormData({
+      email: '',
+      password: ''
+    });
+    console.log("Form submitted with data:", formData);
   };
 
   return (
